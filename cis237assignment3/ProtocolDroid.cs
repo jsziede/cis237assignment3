@@ -30,7 +30,7 @@ namespace cis237assignment3
 
         public override void CalculateTotalCost()
         {
-            
+            //return base + (Convert.ToDecimal(this.amountOfLangs) * COST_PER_LANG);
         }
     }
 }

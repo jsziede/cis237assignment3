@@ -13,7 +13,7 @@ namespace cis237assignment3
             this.printMenuPrompt();
             string promptResponse = Console.ReadLine();                                                                 //program records the user's response to the promptResponse string
             while (promptResponse != "1" && promptResponse != "2" &&
-                 promptResponse != "3")                                                                                 //runs while the user continues to provide an invalid response
+                 promptResponse != "3" && promptResponse != "4")                                                        //runs while the user continues to provide an invalid response
             {
                 Console.WriteLine("Error. Please select a valid number." + Environment.NewLine);                        //user is told that their response was invalid
                 this.printMenuPrompt();                                                                                 //user is listed the options once again
@@ -41,7 +41,7 @@ namespace cis237assignment3
                  promptResponse != "3")                                                                                 //runs while the user continues to provide an invalid response
             {
                 Console.WriteLine("Error. Please select a valid number." + Environment.NewLine);                        //user is told that their response was invalid
-                this.printModelPrompt();                                                                                 //user is listed the options once again
+                this.printModelPrompt();                                                                                //user is listed the options once again
                 promptResponse = Console.ReadLine();                                                                    //program records the user's response again
             }
             return Int32.Parse(promptResponse);                                                                         //returns any valid response from the user
@@ -56,7 +56,7 @@ namespace cis237assignment3
                  promptResponse != "3")                                                                                 //runs while the user continues to provide an invalid response
             {
                 Console.WriteLine("Error. Please select a valid number." + Environment.NewLine);                        //user is told that their response was invalid
-                this.printMaterialPrompt();                                                                                 //user is listed the options once again
+                this.printMaterialPrompt();                                                                             //user is listed the options once again
                 promptResponse = Console.ReadLine();                                                                    //program records the user's response again
             }
             if (promptResponse == "1")                                                                                  //returns any valid response from the user
@@ -83,7 +83,7 @@ namespace cis237assignment3
                  promptResponse != "3")                                                                                 //runs while the user continues to provide an invalid response
             {
                 Console.WriteLine("Error. Please select a valid number." + Environment.NewLine);                        //user is told that their response was invalid
-                this.printColorPrompt();                                                                                 //user is listed the options once again
+                this.printColorPrompt();                                                                                //user is listed the options once again
                 promptResponse = Console.ReadLine();                                                                    //program records the user's response again
             }
             if (promptResponse == "1")                                                                                  //returns any valid response from the user
@@ -266,8 +266,9 @@ namespace cis237assignment3
         private void printModelPrompt()
         {
             Console.WriteLine("1. Protocol Droid");
-            Console.WriteLine("2. Janitor Droid");
-            Console.WriteLine("3. Astromech Droid");
+            Console.WriteLine("2. Utility Droid");
+            Console.WriteLine("3. Janitor Droid");
+            Console.WriteLine("4. Astromech Droid");
         }
 
         private void printMaterialPrompt()
