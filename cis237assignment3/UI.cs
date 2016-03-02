@@ -24,12 +24,12 @@ namespace cis237assignment3
 
         public void Close()
         {
-            Console.WriteLine("You are now leaving the program.");
+            Console.WriteLine("You are now leaving the program.");  //a message that is printed after the user chose to close the program
         }
 
         public void InvalidMenuResponse()
         {
-            Console.WriteLine("Invalid selection. Please choose one of the above options.");
+            Console.WriteLine("Invalid selection. Please choose one of the above options.");    //a message to warn the user that their response from the main menu is invalid
         }
 
         public int GetDroidModel()
@@ -38,7 +38,7 @@ namespace cis237assignment3
             this.printModelPrompt();
             string promptResponse = Console.ReadLine();                                                                 //program records the user's response to the promptResponse string
             while (promptResponse != "1" && promptResponse != "2" &&
-                 promptResponse != "3")                                                                                 //runs while the user continues to provide an invalid response
+                 promptResponse != "3" && promptResponse != "4")                                                        //runs while the user continues to provide an invalid response
             {
                 Console.WriteLine("Error. Please select a valid number." + Environment.NewLine);                        //user is told that their response was invalid
                 this.printModelPrompt();                                                                                //user is listed the options once again
@@ -59,7 +59,8 @@ namespace cis237assignment3
                 this.printMaterialPrompt();                                                                             //user is listed the options once again
                 promptResponse = Console.ReadLine();                                                                    //program records the user's response again
             }
-            if (promptResponse == "1")                                                                                  //returns any valid response from the user
+            ///the return value is based on the user's selection
+            if (promptResponse == "1")                                                                                  
             {
                 return "Iron";
             }
@@ -86,7 +87,8 @@ namespace cis237assignment3
                 this.printColorPrompt();                                                                                //user is listed the options once again
                 promptResponse = Console.ReadLine();                                                                    //program records the user's response again
             }
-            if (promptResponse == "1")                                                                                  //returns any valid response from the user
+            ///the return value is based on the user's selection
+            if (promptResponse == "1")                                                                                  
             {
                 return "White";
             }
@@ -106,16 +108,14 @@ namespace cis237assignment3
             Console.WriteLine("How many languages do you want?" + Environment.NewLine +
                 "Please answer with an integer.");
             string userInput = Console.ReadLine();
-            int i;
-            if (Int32.TryParse(userInput, out i))
+            int i;                                                                              //integer to use as a reference for the tryparse
+            while (Int32.TryParse(userInput, out i) == false)                                   //program checks if the user's response is an integer
             {
-                return Int32.Parse(userInput);
+                Console.WriteLine("How many languages do you want?" + Environment.NewLine +
+                "Please answer with an integer.");
+                userInput = Console.ReadLine();                                                 //while loop prevents user from advancing until the user has enetered an integer
             }
-            else
-            {
-                GetNumberOfLangs();
-                return 0;
-            }
+            return Int32.Parse(userInput);                                                      //a valid integer is returned
         }
 
         public bool GetToolbox()
@@ -128,6 +128,7 @@ namespace cis237assignment3
                 Console.WriteLine("Error. Please select a valid number." + Environment.NewLine);                        //user is told that their response was invalid
                 promptResponse = Console.ReadLine();                                                                    //program records the user's response again
             }
+            ///the return value is based on the user's selection
             if (promptResponse == "1")
             {
                 return true;
@@ -148,6 +149,7 @@ namespace cis237assignment3
                 Console.WriteLine("Error. Please select a valid number." + Environment.NewLine);                        //user is told that their response was invalid
                 promptResponse = Console.ReadLine();                                                                    //program records the user's response again
             }
+            ///the return value is based on the user's selection
             if (promptResponse == "1")
             {
                 return true;
@@ -168,6 +170,7 @@ namespace cis237assignment3
                 Console.WriteLine("Error. Please select a valid number." + Environment.NewLine);                        //user is told that their response was invalid
                 promptResponse = Console.ReadLine();                                                                    //program records the user's response again
             }
+            ///the return value is based on the user's selection
             if (promptResponse == "1")
             {
                 return true;
@@ -188,6 +191,7 @@ namespace cis237assignment3
                 Console.WriteLine("Error. Please select a valid number." + Environment.NewLine);                        //user is told that their response was invalid
                 promptResponse = Console.ReadLine();                                                                    //program records the user's response again
             }
+            ///the return value is based on the user's selection
             if (promptResponse == "1")
             {
                 return true;
@@ -208,6 +212,7 @@ namespace cis237assignment3
                 Console.WriteLine("Error. Please select a valid number." + Environment.NewLine);                        //user is told that their response was invalid
                 promptResponse = Console.ReadLine();                                                                    //program records the user's response again
             }
+            ///the return value is based on the user's selection
             if (promptResponse == "1")
             {
                 return true;
@@ -228,6 +233,7 @@ namespace cis237assignment3
                 Console.WriteLine("Error. Please select a valid number." + Environment.NewLine);                        //user is told that their response was invalid
                 promptResponse = Console.ReadLine();                                                                    //program records the user's response again
             }
+            ///the return value is based on the user's selection
             if (promptResponse == "1")
             {
                 return true;
@@ -243,27 +249,25 @@ namespace cis237assignment3
             Console.WriteLine("How many ships do you want?" + Environment.NewLine +
                 "Please answer with an integer.");
             string userInput = Console.ReadLine();
-            int i;
-            if (Int32.TryParse(userInput, out i))
+            int i;                                                                              //integer to use as a reference for the tryparse
+            while (Int32.TryParse(userInput, out i) == false)                                   //program checks if the user's response is an integer
             {
-                return Int32.Parse(userInput);
+                Console.WriteLine("How many ships do you want?" + Environment.NewLine +
+                "Please answer with an integer.");
+                userInput = Console.ReadLine();                                                 //while loop prevents user from advancing until the user has enetered an integer
             }
-            else
-            {
-                GetNumberShips();
-                return 0;
-            }
+            return Int32.Parse(userInput);                                                      //a valid integer is returned
         }
 
-        private void printMenuPrompt()
+        private void printMenuPrompt()                          //menu to select which course of action the program should take
         {
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. View Droids");
             Console.WriteLine("2. Add Droid");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("3. Exit");
         }
 
-        private void printModelPrompt()
+        private void printModelPrompt()             //menu to determine what model of droid the user wants
         {
             Console.WriteLine("1. Protocol Droid");
             Console.WriteLine("2. Utility Droid");
@@ -271,14 +275,14 @@ namespace cis237assignment3
             Console.WriteLine("4. Astromech Droid");
         }
 
-        private void printMaterialPrompt()
+        private void printMaterialPrompt()  //menu to determine what material of droid the user wants
         {
             Console.WriteLine("1. Iron");
             Console.WriteLine("2. Steel");
             Console.WriteLine("3. Gold");
         }
 
-        private void printColorPrompt()
+        private void printColorPrompt()     //menu to determine what color of droid the user wants
         {
             Console.WriteLine("1. White");
             Console.WriteLine("2. Blue");
